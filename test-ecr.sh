@@ -9,8 +9,8 @@ then
     echo "\$VERSION is empty"
 else
     docker build . --build-arg IMAGE_TAG=$VERSION --tag $REPOSITORY_URI/$IMAGE_REPO_NAME:$VERSION
-    #docker pull nginx:latest
     aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI 
-    #docker tag nginx:latest $REPOSITORY_URI/$IMAGE_REPO_NAME:latest
     docker push $REPOSITORY_URI/$IMAGE_REPO_NAME:$VERSION
+    docker tag $REPOSITORY_URI/$IMAGE_REPO_NAME:$VERSION $REPOSITORY_URI/$IMAGE_REPO_NAME:latest
+    docker push $REPOSITORY_URI/$IMAGE_REPO_NAME:latest
 fi

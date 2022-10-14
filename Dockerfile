@@ -7,9 +7,9 @@ ARG IMAGE_TAG
 
 RUN mkdir -p /opt/app
 
-COPY app/bin/eVision-product-ops.linux.$IMAGE_TAG /opt/app/app.sh
+COPY app/bin/eVision-product-ops.linux.$IMAGE_TAG /opt/app/eVision
 
-RUN chmod +x /opt/app/app.sh
+RUN chmod +x /opt/app/eVision
 
 WORKDIR /opt/app
-CMD sh app.sh
+CMD ["./eVision"]
