@@ -1,9 +1,16 @@
 #!/bin/sh
-ACCOUNT_ID="1234567890"
+ACCOUNT_ID="564571135814"
 AWS_DEFAULT_REGION="us-east-1"
 REPOSITORY_URI="$ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com"
-IMAGE_REPO_NAME="eVision"
-docker pull centos:7
-aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI 
-docker tag centos:7 $REPOSITORY_URI/$IMAGE_REPO_NAME:latest
-docker push $REPOSITORY_URI/$IMAGE_REPO_NAME:latest
+IMAGE_REPO_NAME="evision"
+VERSION=`cat version`
+if [ -z "$VERSION" ]
+then
+    echo "\$VERSION is empty"
+else
+    docker build . --build-arg IMAGE_TAG=$VERSION --tag $REPOSITORY_URI/$IMAGE_REPO_NAME:$VERSION
+    #docker pull nginx:latest
+    aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI 
+    #docker tag nginx:latest $REPOSITORY_URI/$IMAGE_REPO_NAME:latest
+    docker push $REPOSITORY_URI/$IMAGE_REPO_NAME:$VERSION
+fi

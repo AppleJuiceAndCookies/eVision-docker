@@ -1,6 +1,9 @@
 FROM centos:7
+
 EXPOSE 8080
 EXPOSE 80
+
+ARG IMAGE_TAG
 
 RUN mkdir -p /opt/app
 
