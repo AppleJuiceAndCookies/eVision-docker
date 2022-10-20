@@ -1,0 +1,21 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "$ECS_TASK_DEFINITION"
+        LoadBalancerInfo:
+          ContainerName: "$ECS_CONTAINER_NAME"
+          ContainerPort: "$CONTAINER_PORT"
+        PlatformVersion: "LATEST"
+        NetworkConfiguration:
+            AwsvpcConfiguration:
+              Subnets: ["$ECS_SUBNETS_A", "$ECS_SUBNETS_B", "$ECS_SUBNETS_C"]
+              SecurityGroups: ["$ECS_SECURITY_GROUPS"]
+              AssignPublicIp: "ENABLED"
+# Hooks:
+# - BeforeInstall: "BeforeInstallHookFunctionName"
+# - AfterInstall: "AfterInstallHookFunctionName"
+# - AfterAllowTestTraffic: "AfterAllowTestTrafficHookFunctionName"
+# - BeforeAllowTraffic: "BeforeAllowTrafficHookFunctionName"
+# - AfterAllowTraffic: "AfterAllowTrafficHookFunctionName"
