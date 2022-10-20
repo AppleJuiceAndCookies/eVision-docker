@@ -6,8 +6,8 @@
           "name": "$REPOSITORY_URI/$IMAGE_REPO_NAME",
           "portMappings": [ 
              { 
-                "containerPort": "$CONTAINER_PORT",
-                "hostPort": "$CONTAINER_PORT",
+                "containerPort": $CONTAINER_PORT,
+                "hostPort": $CONTAINER_PORT,
                 "protocol": "tcp"
              }
           ]

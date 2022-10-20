@@ -6,7 +6,7 @@ Resources:
         TaskDefinition: "$ECS_TASK_DEFINITION"
         LoadBalancerInfo:
           ContainerName: "$ECS_CONTAINER_NAME"
-          ContainerPort: "$CONTAINER_PORT"
+          ContainerPort: $CONTAINER_PORT
         PlatformVersion: "LATEST"
         NetworkConfiguration:
             AwsvpcConfiguration:
