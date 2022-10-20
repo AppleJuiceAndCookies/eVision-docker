@@ -2,8 +2,8 @@
     "containerDefinitions": [ 
        { 
           "essential": true,
-          "image": "$CONTAINER_IMAGE",
-          "name": "$REPOSITORY_URI/$IMAGE_REPO_NAME",
+          "name": "$CONTAINER_IMAGE",
+          "image": "$REPOSITORY_URI/$IMAGE_REPO_NAME",
           "portMappings": [ 
              { 
                 "containerPort": $CONTAINER_PORT,
@@ -16,6 +16,7 @@
     "cpu": "256",
     "executionRoleArn": "arn:aws:iam::$ACCOUNT_ID:role/$CONTAINER_ROLE_ARN",
     "memory": "512",
+    "family": "fargate-task-definition",
     "networkMode": "awsvpc",
     "requiresCompatibilities": [ 
         "FARGATE" 
