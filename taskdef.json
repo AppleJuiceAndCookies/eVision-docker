@@ -14,7 +14,7 @@
        }
     ],
     "cpu": "256",
-    "executionRoleArn": "$CONTAINER_ROLE_ARN",
+    "executionRoleArn": "arn:aws:iam::$ACCOUNT_ID:role/$CONTAINER_ROLE_ARN",
     "memory": "512",
     "networkMode": "awsvpc",
     "requiresCompatibilities": [ 
