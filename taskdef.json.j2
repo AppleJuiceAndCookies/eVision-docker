@@ -16,7 +16,7 @@
     "cpu": "256",
     "executionRoleArn": "arn:aws:iam::$ACCOUNT_ID:role/$CONTAINER_ROLE_ARN",
     "memory": "512",
-    "family": "fargate-task-definition",
+    "family": "$ECS_CONTAINER_NAME",
     "networkMode": "awsvpc",
     "requiresCompatibilities": [ 
         "FARGATE" 
