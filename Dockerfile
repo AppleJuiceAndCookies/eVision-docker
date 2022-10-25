@@ -1,4 +1,4 @@
-FROM centos:7
+FROM public.ecr.aws/docker/library/centos:centos7.9.2009
 
 EXPOSE 8080
 EXPOSE 80
